@@ -1,1 +1,1 @@
-MY_DATABASE_URL="postgresql://root:root@localhost:32700/social_network"
+SN_DATABASE_URL="postgresql://user:password@localhost:33700/task_fastapi"
