@@ -1,6 +1,7 @@
+import uvicorn
 from fastapi import FastAPI
 from src.db import database
-import uvicorn
+from src import endpoints
 # import sys
 # import os
 #
@@ -8,12 +9,9 @@ import uvicorn
 # SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 # sys.path.append(os.path.dirname(SCRIPT_DIR))
 
-app = FastAPI()
-
-
-@app.get("/")
-async def root():
-    return {"message": "Hello"}
+app = FastAPI(title="Social Network Task")
+app.include_router(endpoints.user_router, prefix="/users", tags=["users"])
+app.include_router(endpoints.auth_router, prefix="/auth", tags=["auth"])
 
 
 @app.on_event("startup")

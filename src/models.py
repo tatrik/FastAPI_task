@@ -1,14 +1,14 @@
-from sqlalchemy import Table, Column, String, INTEGER, DateTime, ForeignKey, Boolean
+from sqlalchemy import Integer, Table, Column, String, DateTime, ForeignKey, Boolean
 from src.db import metadata
 import datetime
 
 users = Table(
     "users",
     metadata,
-    Column("id", INTEGER, primary_key=True, autoincrement=True, unique=True),
-    Column("name", String(32), nullable=False),
-    Column("email", String(64), nullable=False, unique=True),
-    Column("hashed_password", String(64), nullable=False),
+    Column("id", Integer, primary_key=True, autoincrement=True, unique=True),
+    Column("name", String, nullable=False),
+    Column("email", String, nullable=False, unique=True),
+    Column("hashed_password", String, nullable=False),
     Column("created", DateTime, default=datetime.datetime.utcnow),
     Column("logged_in", DateTime, default=datetime.datetime.utcnow),
     Column("last_activity", DateTime, default=datetime.datetime.utcnow),
@@ -17,19 +17,19 @@ users = Table(
 posts = Table(
     "posts",
     metadata,
-    Column("id", INTEGER, primary_key=True, autoincrement=True, unique=True),
-    Column("user_id", INTEGER, ForeignKey("users.id"), nullable=False),
-    Column("title", String(64), nullable=False),
-    Column("description", String(350), nullable=False),
+    Column("id", Integer, primary_key=True, autoincrement=True, unique=True),
+    Column("user_id", Integer, ForeignKey("users.id"), nullable=False),
+    Column("title", String, nullable=False),
+    Column("description", String, nullable=False),
     Column("created", DateTime, default=datetime.datetime.utcnow),
 )
 
 likes = Table(
     "likes",
     metadata,
-    Column("id", INTEGER, primary_key=True, autoincrement=True, unique=True),
-    Column("post_id", INTEGER, ForeignKey("posts.id"), nullable=False),
-    Column("user_id", INTEGER, ForeignKey("users.id"), nullable=False),
+    Column("id", Integer, primary_key=True, autoincrement=True, unique=True),
+    Column("post_id", Integer, ForeignKey("posts.id"), nullable=False),
+    Column("user_id", Integer, ForeignKey("users.id"), nullable=False),
     Column("like", Boolean, nullable=False),
     Column("date", DateTime, default=datetime.datetime.utcnow),
 )
