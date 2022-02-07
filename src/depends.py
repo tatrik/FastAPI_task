@@ -1,5 +1,5 @@
 from fastapi import Depends, HTTPException, status
-from src.repositories import UserRepository
+from src.repositories import UserRepository, PostRepository, LikeRepository
 from src.db import database
 from src.schemas import User
 from src.security import JWTBearer, decode_access_token
@@ -7,6 +7,14 @@ from src.security import JWTBearer, decode_access_token
 
 def get_user_repository() -> UserRepository:
     return UserRepository(database)
+
+
+def get_post_repository() -> PostRepository:
+    return PostRepository(database)
+
+
+def get_like_repository() -> LikeRepository:
+    return LikeRepository(database)
 
 
 async def get_current_user(
