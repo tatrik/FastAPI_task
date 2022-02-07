@@ -1,4 +1,4 @@
-## FastAPI_task
+### FastAPI_task
 
 # How to run locally
 - Project was implemented using `python3.8`
@@ -19,9 +19,6 @@ Basic models:
 ● User
 ● Post (always made by a user)
 ```
-- `User` model is implemented in `apps.authorization` app
-- `Post` model is implemented in `apps.posts` app
-- `Like` model was created on my initiative. It is used to save likes of specific post
 ```
 Basic Features:
 ● user signup
